@@ -1,0 +1,1 @@
+DELETE FROM tutor WHERE tutor_id=$1;

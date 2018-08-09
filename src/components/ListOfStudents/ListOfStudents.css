@@ -1,0 +1,16 @@
+.personal-img {
+  width: 15vw;
+  height: 15vh;
+}
+.boxx {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.each-box {
+  padding: 20px;
+}

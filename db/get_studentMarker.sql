@@ -1,0 +1,2 @@
+select coordinates
+from students; 

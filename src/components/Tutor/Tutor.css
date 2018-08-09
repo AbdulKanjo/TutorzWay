@@ -1,0 +1,67 @@
+/* .tutor-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+} */
+
+/* .dropdownmenu {
+  left: -3px;
+} */
+/* .tutor-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 30px;
+  padding-top: 40px;
+} */
+.tutor-infor {
+  padding-left: 30px;
+}
+.chat-vis {
+  z-index: 100;
+}
+.chat-but {
+  z-index: 100;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+.tutor-page-img {
+  width: 20vw !important;
+}
+.first-part-tutor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+}
+.sec-part-tutor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+}
+.map-card-tutor {
+  width: 23vw;
+}
+@media screen and (max-width: 803px) {
+  .map-card-tutor {
+    width: 70vw;
+  }
+}
+.hr-color-tutor {
+  border-color: white;
+}
+.review-padd {
+  padding-left: 10px;
+}

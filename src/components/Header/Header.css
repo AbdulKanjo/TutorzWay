@@ -1,0 +1,51 @@
+a.new {
+  color: black;
+  text-decoration: none;
+}
+.login-svg {
+  width: 8vw;
+}
+.login-text {
+  font-size: 10px;
+}
+.login-svg-text {
+  text-align: center;
+}
+@media screen and (min-width: 480px) {
+  .login-svg {
+    width: 4vw;
+  }
+  .login-text {
+    font-size: 1vw;
+  }
+}
+@media screen and (min-width: 415px) {
+  .nav-home-text {
+    font-size: 30px;
+  }
+}
+.mr-autoo {
+  position: absolute;
+  top: 47px;
+  left: 49.8%;
+  /* bringyour own prefixes */
+  transform: translate(-50%, -50%);
+  /* margin: 0 auto;
+  width: 100px; */
+}
+.mr-2 .navbar-toggler {
+  background-image: url("data:image/svg+xml;..");
+}
+.navbar-light .navbar-toggler {
+  color: transparent !important;
+  border-color: transparent !important;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url(http://www.economicsgazette.com/wp-content/themes/giornalismo/images/mobile-nav-icon.png) !important;
+}
+.navbar-toggler {
+  padding: 0 !important;
+}
+/* .text-focus-inn {
+  margin: 0 auto;
+} */

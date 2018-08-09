@@ -1,0 +1,1 @@
+DELETE FROM tutorreview WHERE id=$1;

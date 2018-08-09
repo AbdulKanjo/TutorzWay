@@ -1,0 +1,22 @@
+.personal-img {
+  width: 15vw;
+  height: 15vh;
+}
+.box-tutors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.each-box-tutor {
+  padding: 20px;
+  color: #1e90ff;
+  width: 20vw;
+  height: 10vh;
+}
+#filter-text {
+  color: black !important;
+}
