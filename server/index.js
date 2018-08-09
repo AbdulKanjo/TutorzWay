@@ -196,7 +196,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
-const port = 3007;
+const port = process.env.PORT || 3007;
 server = app.listen(SERVER_CONFIGS.PORT, error => {
   if (error) throw error;
   console.log(`server is listening ${SERVER_CONFIGS.PORT}`);
