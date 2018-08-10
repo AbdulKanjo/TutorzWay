@@ -65,7 +65,13 @@ border-radius: 20px; */
   padding-top: 40px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 81px;
+}
+.card-mobile {
+  padding-top: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 81px;
 }
 
 .text-focus-in {
@@ -152,5 +158,24 @@ border-radius: 20px; */
     -webkit-transform: translateY(-5px);
     -ms-transform: translateY(-5px);
     transform: translateY(-5px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scroll-down {
+    display: none;
+  }
+}
+/* .card-mobile {
+  display: none;
+} */
+@media screen and (max-width: 480px) {
+  .card-padding {
+    display: none;
+  }
+}
+@media screen and (min-width: 480px) {
+  .card-mobile {
+    display: none;
   }
 }

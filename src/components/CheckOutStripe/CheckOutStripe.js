@@ -4,6 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import swal from "sweetalert2";
 import STRIPE_PUBLISHABLE from "../../constants/stripe";
 import PAYMENT_SERVER_URL from "../../constants/server";
+import logo from "./log.jpg";
 
 const CURRENCY = "USD";
 
@@ -43,7 +44,7 @@ const Checkout = ({ name, description, amount }) => (
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
     panelLabel="Pay for Tutor"
-    image="https://www.onlywood.com.tr/wp-content/uploads/2015/12/odeme-icon.png"
+    image={logo}
   />
 );
 

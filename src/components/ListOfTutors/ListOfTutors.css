@@ -1,4 +1,4 @@
-.personal-img {
+/* .personal-img {
   width: 15vw;
   height: 15vh;
 }
@@ -19,4 +19,57 @@
 }
 #filter-text {
   color: black !important;
+} */
+
+@media screen and (min-width: 750px) {
+  .box-tutors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+}
+.box-tutors {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+  padding: top 30px;
+}
+.profile-bio {
+  text-align: center;
+}
+.each-box-tutor {
+  padding-bottom: 10px;
+}
+
+.each-el-on-list {
+  padding-bottom: 5px;
+}
+.padding-for-list {
+  padding-top: 15px;
+}
+
+.search-tutors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  padding-bottom: 20px;
+}
+.search {
+  border-radius: 20px;
+  text-align: center;
+  border: 0;
+}
+.filter {
+  padding-left: 13px;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Collapse,
   Navbar,
@@ -6,12 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem
-  // DropdownMenu,
-  // DropdownItem,
-  // UncontrolledDropdown,
-  // DropdownToggle
 } from "reactstrap";
-// import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 export default class Header extends React.Component {
@@ -20,73 +16,68 @@ export default class Header extends React.Component {
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: true
+      collapsed: true,
+      logIn: true
     };
   }
-
   toggleNavbar() {
     this.setState({
       collapsed: !this.state.collapsed
     });
   }
+  getession() {
+    axios.get("/api/me").then(response => {
+      console.log(response);
+      this.setState({
+        logIn: false
+      });
+    });
+  }
   render() {
+    console.log(this.state.logIn);
+
     return (
       <div className="fixed-nav">
         <Navbar color="faded" light>
           <NavbarBrand className="mr-auto">
-            <a className="login-text" href={process.env.REACT_APP_LOGIN}>
-              <img
-                className="login-svg"
-                src="http://hodstaronline.org/img/login.png"
-                alt="sd"
-              />
-              <div className="login-svg-text">Login</div>
-            </a>
-          </NavbarBrand>
-          {/* <NavbarBrand className="mr-auto">
-            <UncontrolledDropdown setActiveFromChild>
-              <DropdownToggle tag="a" className="nav-link" caret>
-                <div className="login-svg-text">
-                  <img
-                    className="login-svg"
-                    src="http://cdn.onlinewebfonts.com/svg/img_311846.png"
-                    alt="sd"
-                  />
+            {this.state.logIn ? (
+              <a className="login-text" href={process.env.REACT_APP_LOGIN}>
+                <img
+                  className="login-svg"
+                  src="http://hodstaronline.org/img/login.png"
+                  alt="sd"
+                />
+                <div onClick={this.getession()} className="login-svg-text">
+                  Login
                 </div>
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem tag="a" href="/blah" active>
-                  <p>
-                    login
-                    <a
-                      className="login-text"
-                      href={process.env.REACT_APP_LOGIN}
-                    >
-                      looooogin
-                    </a>
-                  </p>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </NavbarBrand> */}
+              </a>
+            ) : (
+              // <a className="login-text" href={process.env.REACT_APP_LOGOUT}>
+              <div
+                className="login-text"
+                onClick={() => {
+                  axios.post("/api/logout").then(() => {
+                    this.setState({ logIn: true });
+                  });
+                }}
+              >
+                <img
+                  className="login-svg"
+                  src="http://hodstaronline.org/img/login.png"
+                  alt="sd"
+                />
+                <div className="login-svg-text">logout</div>
+              </div>
+              // {/* // </a> */}
+            )}
+          </NavbarBrand>
+
           <NavbarBrand center className="mr-autoo">
             <NavLink to="/">
               <p className="nav-home-text">Home</p>
             </NavLink>
           </NavbarBrand>
-          {/* <div className="text-focus-inn">
-            <p id="name-of-appp">TUTORZWAY</p>
-          </div> */}
-          {/* <UncontrolledDropdown setActiveFromChild>
-            <DropdownToggle tag="a" className="nav-link" caret>
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem tag="a" href="/blah" active>
-                Link
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
+
           <NavbarToggler
             color="#ffffff"
             onClick={this.toggleNavbar}
@@ -95,27 +86,31 @@ export default class Header extends React.Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav center className="text-center" navbar>
               <div>
-                <NavItem>
+                <NavItem onClick={this.toggleNavbar}>
                   <NavLink className="new" to="/googlemap">
                     GoogleMap
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <hr className="hr-color-tutor" />
+                <NavItem onClick={this.toggleNavbar}>
                   <NavLink className="new" to="/listofclasses">
-                    List Of Classes
+                    Classes
                   </NavLink>
-                </NavItem>
-                <NavItem>
+                </NavItem> */}
+                <hr className="hr-color-tutor" />
+                <NavItem onClick={this.toggleNavbar}>
                   <NavLink className="new" to="/listoftutors">
-                    List Of Tutors
+                    Tutors
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <hr className="hr-color-tutor" />
+                <NavItem onClick={this.toggleNavbar}>
                   <NavLink className="new" to="/listofstudents">
-                    List Of Students
+                    Students
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                <hr className="hr-color-tutor" />
+                <NavItem onClick={this.toggleNavbar}>
                   <NavLink className="new" to="/login">
                     Sign Up
                   </NavLink>
@@ -125,7 +120,6 @@ export default class Header extends React.Component {
           </Collapse>
           <div />
         </Navbar>
-        {/* <button onClick={this.Logout}> logout </button> */}
       </div>
     );
   }

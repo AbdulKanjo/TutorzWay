@@ -62,7 +62,7 @@ class NewStudent extends Component {
     console.log(this.state.auth_id.auth_id);
 
     return (
-      <div>
+      <div className="new-signup-page">
         <div className="centering">
           <div className="new-tutor-input">
             <Card
@@ -79,7 +79,7 @@ class NewStudent extends Component {
                 <CardImg
                   top
                   width="100vw"
-                  src="http://www.humanengineers.com/wp-content/uploads/2017/09/learning-1.jpg"
+                  src="http://blog.edmentum.com/sites/blog.edmentum.com/files/images/Personalized%20learning.jpg"
                   alt="Card image cap"
                   style={{ borderRadius: "9px 9px 0 0" }}
                 />

@@ -142,7 +142,8 @@ const newTutor = (req, res, next) => {
     class_subject,
     picture,
     coordinates,
-    auth_id
+    auth_id,
+    pricehour
   } = req.body;
   db.create_tutor([
     first_name,
@@ -153,7 +154,8 @@ const newTutor = (req, res, next) => {
     class_subject,
     picture,
     coordinates,
-    auth_id
+    auth_id,
+    pricehour
   ])
     .then(() => {
       console.log("the authcoming in", auth_id);

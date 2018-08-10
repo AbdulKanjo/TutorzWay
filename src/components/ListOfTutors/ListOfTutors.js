@@ -8,7 +8,8 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Button
 } from "reactstrap";
 
 class ListOfTutors extends Component {
@@ -76,11 +77,11 @@ class ListOfTutors extends Component {
           .includes(this.state.filterString.toUpperCase());
       })
       .map((e, i) => {
-        // console.log("EACH TUTOR!!!", e);
+        console.log("EACH TUTOR!!!", e);
 
         return (
           <div key={i} className="each-box-tutor">
-            <img className="personal-img" src={e.picture} alt="img" />
+            {/* <img className="personal-img" src={e.picture} alt="img" />
             <div>
               {" "}
               <Link to={`/tutor/${e.first_name}`}>{e.first_name} </Link>
@@ -97,12 +98,66 @@ class ListOfTutors extends Component {
               renderStarIcon={() => <span>★</span>}
               starCount={5}
               value={Number(e.rating)}
-            />
+            /> */}
+            <aside className="profile-card">
+              <header>
+                {e.first_name}
+
+                <img
+                  src={e.picture}
+                  // style={{ height: "200px" }}
+                  height="200p"
+                  width="200px"
+                />
+
+                <h1>
+                  <Link to={`/tutor/${e.first_name}`}>{e.last_name} </Link>
+                </h1>
+
+                <h2 className="padding-for-list">Tutor</h2>
+              </header>
+
+              <div className="profile-bio">
+                <p>Get to know me more!</p>
+                <p>
+                  <div>{e.location} </div>
+                  <div>{e.age} </div>
+
+                  <StarRatingComponent
+                    name="rate2"
+                    editing={false}
+                    starColor={"#F7C744"}
+                    renderStarIcon={() => <span>★</span>}
+                    starCount={5}
+                    value={Number(e.rating)}
+                  />
+                </p>
+              </div>
+
+              <ul className="profile-social-links">
+                <li className="each-el-on-list">
+                  <a href="https://accounts.google.com/signin/v2/sl/pwd?service=fusiontables&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+                    <img src="https://image.flaticon.com/icons/png/512/281/281769.png" />
+                  </a>
+                </li>
+
+                <li className="each-el-on-list">
+                  <a href="https://github.com/">
+                    <img src="https://image.flaticon.com/icons/svg/270/270798.svg" />
+                  </a>
+                </li>
+
+                <li className="each-el-on-list">
+                  {/* <img src="https://image.flaticon.com/icons/svg/33/33417.svg" /> */}
+                  ${e.pricehour}
+                </li>
+              </ul>
+            </aside>
             <div>
               {this.state.isAdmin && (
-                <button onClick={id => this.handleDelete(e.tutor_id)}>
+                <Button onClick={id => this.handleDelete(e.tutor_id)}>
                   Delete
-                </button>
+                </Button>
               )}
             </div>
           </div>
@@ -111,7 +166,7 @@ class ListOfTutors extends Component {
 
     return (
       <div>
-        <div>
+        <div className="filter">
           <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle caret color="primary">
               Filter By
@@ -132,11 +187,13 @@ class ListOfTutors extends Component {
             </DropdownMenu>
           </ButtonDropdown>
         </div>
-        <input
-          className="search"
-          placeholder="Search Tutors"
-          onChange={e => this.handleChange(e.target.value)}
-        />
+        <div className="search-tutors">
+          <input
+            className="search"
+            placeholder="Search Tutors"
+            onChange={e => this.handleChange(e.target.value)}
+          />
+        </div>
         <div className="box-tutors">{search}</div>
       </div>
     );

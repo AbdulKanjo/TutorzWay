@@ -24,7 +24,7 @@ import { Card, CardImg, CardText, CardBody, Button } from "reactstrap";
 class NewTutor extends Component {
   constructor() {
     super();
-    this.state = { auth_id: "", input: "" };
+    this.state = { auth_id: "", input: "", pricehour: 0 };
   }
   componentDidMount() {
     axios.get("/api/me").then(res => {
@@ -44,7 +44,8 @@ class NewTutor extends Component {
         class_subject: this.props.class_subject,
         picture: this.props.picture,
         coordinates: this.props.coordinates,
-        auth_id: this.state.auth_id.auth_id
+        auth_id: this.state.auth_id.auth_id,
+        pricehour: this.state.pricehour
       })
       .then(swal("Welcome to TutorzWay!", "", "success"));
   }
@@ -57,6 +58,10 @@ class NewTutor extends Component {
       })
       .catch(error => console.error("Error", error));
   };
+  updatePrice(newprice) {
+    this.setState({ pricehour: newprice });
+  }
+
   render() {
     const {
       updateFirstName,
@@ -68,7 +73,7 @@ class NewTutor extends Component {
       updatePicture
     } = this.props;
     return (
-      <div>
+      <div className="new-signup-page">
         {/* <Link to="/newstudent">New student</Link> */}
         <div className="centering">
           <div id="puff-in-center" className="new-tutor-input">
@@ -86,7 +91,7 @@ class NewTutor extends Component {
                 <CardImg
                   top
                   width="100vw"
-                  src="http://www.humanengineers.com/wp-content/uploads/2017/09/learning-1.jpg"
+                  src="http://blog.edmentum.com/sites/blog.edmentum.com/files/images/Personalized%20learning.jpg"
                   alt="Card image cap"
                   style={{ borderRadius: "9px 9px 0 0" }}
                 />
@@ -210,6 +215,14 @@ class NewTutor extends Component {
                               </div>
                             )}
                           </PlacesAutocomplete>
+                        </div>
+                        <div>
+                          <label className="texting">Hour Rate: </label>
+                          <input
+                            className="first_name"
+                            // placeholder="Last Name"
+                            onChange={e => this.updatePrice(e.target.value)}
+                          />
                         </div>
                       </div>
                     </div>

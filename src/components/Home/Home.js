@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Googlemaptutor from "../GoogleMap/GoogleMapsTutor";
+import Fade from "react-reveal/Fade";
 import {
   Carousel,
   CarouselItem,
@@ -225,9 +226,10 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </CardText>
               </CardBody>
             </Card>
@@ -248,8 +250,10 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  This card has supporting text below as a natural lead-in to
-                  additional content.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </CardText>
               </CardBody>
             </Card>
@@ -270,9 +274,10 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This card has even longer
-                  content than the first to show that equal height action.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </CardText>
               </CardBody>
             </Card>
@@ -293,15 +298,126 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This card has even longer
-                  content than the first to show that equal height action.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
                 </CardText>
               </CardBody>
             </Card>
           </CardDeck>
         </div>
-        <div className="text-flicker-in-glow">Hello</div>
+        <div className="card-mobile">
+          <CardDeck>
+            <Fade left>
+              <Card
+                body
+                inverse
+                style={{
+                  backgroundColor: "#6d90be",
+                  borderColor: "#ffff"
+                }}
+              >
+                <CardImg
+                  top
+                  width="100%"
+                  height="200px"
+                  src="https://images.pexels.com/photos/248152/pexels-photo-248152.jpeg?auto=compress&cs=tinysrgb&h=350"
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <CardTitle className="box-text">Science</CardTitle>
+                  <hr />
+                  {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
+                  <CardText className="box-textt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Fade>
+            <Fade right>
+              <Card
+                body
+                inverse
+                style={{ backgroundColor: "#6d90be", borderColor: "#ffff" }}
+              >
+                <CardImg
+                  top
+                  width="100%"
+                  height="200px"
+                  src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&h=350"
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <CardTitle className="box-text">Math</CardTitle>
+                  <hr />
+                  {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
+                  <CardText className="box-textt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Fade>
+            <Fade left>
+              <Card
+                body
+                inverse
+                style={{ backgroundColor: "#6d90be", borderColor: "#ffff" }}
+              >
+                <CardImg
+                  top
+                  width="100%"
+                  height="200px"
+                  src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg?auto=compress&cs=tinysrgb&h=350"
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <CardTitle className="box-text">Business</CardTitle>
+                  <hr />
+                  {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
+                  <CardText className="box-textt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Fade>
+            <Fade right>
+              <Card
+                body
+                inverse
+                style={{ backgroundColor: "#6d90be", borderColor: "#ffff" }}
+              >
+                <CardImg
+                  top
+                  width="100%"
+                  height="200px"
+                  src="https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&h=350"
+                  alt="Card image cap"
+                />
+                <CardBody>
+                  <CardTitle className="box-text">Engineering</CardTitle>
+                  <hr />
+                  {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
+                  <CardText className="box-textt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Fade>
+          </CardDeck>
+        </div>
       </div>
     );
   }

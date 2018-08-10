@@ -185,8 +185,8 @@ class Tutor extends Component {
                     <Card
                       style={{
                         backgroundColor: "transparent",
-                        borderColor: "transparent",
-                        flexDirection: "unset"
+                        borderColor: "transparent"
+                        // flexDirection: "unset"
                       }}
                     >
                       <CardImg
@@ -197,6 +197,9 @@ class Tutor extends Component {
                         src={currentTutor.picture}
                         alt="Card image cap"
                       />
+                      {/* <Col xs={6} md={4}>
+                        <Image src="/thumbnail.png" circle />
+                      </Col> */}
                       <CardBody style={{ textAlign: "center" }}>
                         <CardTitle>
                           {" "}
@@ -230,7 +233,7 @@ class Tutor extends Component {
                           <Checkout
                             name={"Make A Payment for Tutor"}
                             description={"Hour rate"}
-                            amount={40}
+                            amount={currentTutor.pricehour}
                             button_text="Buy Now"
                           />
                         </CardText>
