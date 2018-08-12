@@ -102,27 +102,25 @@ class ListOfTutors extends Component {
             <aside className="profile-card">
               <header>
                 {e.first_name}
-
                 <img
                   src={e.picture}
                   // style={{ height: "200px" }}
                   height="200p"
                   width="200px"
                 />
-
-                <h1>
-                  <Link to={`/tutor/${e.first_name}`}>{e.last_name} </Link>
-                </h1>
-
+                <h1>{e.last_name}</h1>
                 <h2 className="padding-for-list">Tutor</h2>
               </header>
 
               <div className="profile-bio">
-                <p>Get to know me more!</p>
+                <p className="margin-link-know">
+                  Get to know me more
+                  <Link to={`/tutor/${e.first_name}`}> Here! </Link>
+                </p>
                 <p>
                   <div>{e.location} </div>
-                  <div>{e.age} </div>
-
+                  <div>Experience: {e.years_experience}</div>
+                  <div>Age: {e.age} </div>
                   <StarRatingComponent
                     name="rate2"
                     editing={false}

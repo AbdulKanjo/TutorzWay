@@ -226,10 +226,9 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s
                 </CardText>
               </CardBody>
             </Card>
@@ -250,10 +249,9 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s
                 </CardText>
               </CardBody>
             </Card>
@@ -274,10 +272,9 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s
                 </CardText>
               </CardBody>
             </Card>
@@ -298,10 +295,9 @@ class Home extends Component {
                 <hr />
                 {/* <CardSubtitle className="box-text">Card subtitle</CardSubtitle> */}
                 <CardText className="box-textt">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s
                 </CardText>
               </CardBody>
             </Card>

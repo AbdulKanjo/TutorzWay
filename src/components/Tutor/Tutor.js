@@ -13,6 +13,8 @@ import {
   Button,
   Col
 } from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from "reactstrap";
+import classnames from "classnames";
 import Chat from "../Chat/Chat";
 import { ButtonDropdown, DropdownMenu, DropdownToggle } from "reactstrap";
 import "./Tutor.css";
@@ -51,6 +53,7 @@ class Tutor extends Component {
   constructor() {
     super();
     this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this);
     this.state = {
       tutor: [],
       currentTutor: "",
@@ -59,7 +62,8 @@ class Tutor extends Component {
       userreviews: [],
       dropdownOpen: false,
       hasAccount: false,
-      username: ""
+      username: "",
+      activeTab: "1"
     };
   }
 
@@ -72,6 +76,13 @@ class Tutor extends Component {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
+  }
+  toggle1(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
   }
   getession() {
     axios.get("/api/me").then(response => {
@@ -147,7 +158,7 @@ class Tutor extends Component {
   }
 
   render() {
-    console.log(this.state.hasAccount);
+    console.log(this.state.currentTutor);
     let mappedReviews = this.state.userreviews.map((e, i) => {
       console.log(this.state.userreviews);
       console.log(e);
@@ -180,148 +191,277 @@ class Tutor extends Component {
           <div>
             <div>
               <div className="first-part-tutor">
-                <div>
-                  <Col>
-                    <Card
-                      style={{
-                        backgroundColor: "transparent",
-                        borderColor: "transparent"
-                        // flexDirection: "unset"
-                      }}
-                    >
-                      <CardImg
-                        style={{ margin: "auto" }}
-                        top
-                        className="tutor-page-img"
-                        width="50%"
-                        src={currentTutor.picture}
-                        alt="Card image cap"
-                      />
-                      {/* <Col xs={6} md={4}>
-                        <Image src="/thumbnail.png" circle />
-                      </Col> */}
-                      <CardBody style={{ textAlign: "center" }}>
-                        <CardTitle>
-                          {" "}
-                          {currentTutor.first_name} {currentTutor.last_name}
-                        </CardTitle>
+                <div className="containerr">
+                  <div className="avatar-flip">
+                    <img src={currentTutor.picture} height="150" width="150" />
+                    <MapWithAMarker
+                      markers={this.state.currentTutor.coordinates}
+                    />
+                  </div>
 
-                        <CardText>
+                  <div className="tutor-information-f">
+                    <div className="main-info-t">
+                      <div>
+                        <h2 className="information-pad">
+                          {currentTutor.first_name} {currentTutor.last_name}
+                        </h2>
+
+                        <p className="information-pad">
+                          <div>Age: {currentTutor.age} years </div>
                           <div>
                             Experience: {currentTutor.years_experience} years{" "}
                           </div>
-                          <div>{currentTutor.location}</div>
+                          <div>Rates: ${currentTutor.pricehour} </div>
+                        </p>
+                      </div>
+                      <div className="information-pad">
+                        <hr style={{ width: "70%" }} />
+                        <div>
+                          Work History <hr style={{ width: "70%" }} />
+                        </div>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and
+                          typesetting industry.
+                        </p>
+                        <hr style={{ width: "70%" }} />
+                        <div>skills</div>
+                        <p>
+                          Lorem Ipsum is simply dummy text of the printing and
+                          typesetting industry.
+                        </p>
+                      </div>
+                    </div>
 
-                          <div className="map-card-tutor">
-                            <Card
-                              style={{
-                                backgroundColor: "transparent",
-                                borderColor: "transparent"
+                    <div className="sec-part-tutor">
+                      <div>
+                        <h4 className="loc-tutor">
+                          <img
+                            width="28px "
+                            src="https://image.flaticon.com/icons/svg/684/684809.svg"
+                          />
+                          {currentTutor.location}
+                        </h4>
+                        <p>
+                          Connec dolore ipsum faucibus mollis interdum. Donec
+                          ullamcorper nulla non metus auctor fringilla.
+                          {/* <div class="vl" /> */}
+                        </p>
+                      </div>
+                      {/* <div>
+                        <Col>
+                          <Card
+                            style={{
+                              backgroundColor: "transparent",
+                              borderColor: "transparent"
+                            }}
+                          >
+                            <CardBody>
+                              <CardTitle style={{ textAlign: "center" }}>
+                                Reviews
+                              </CardTitle>
+
+                              <CardText>
+                                {this.state.hasAccount ? (
+                                  <div>
+                                    <div>
+                                      <input
+                                        className="Review"
+                                        placeholder="Review"
+                                        value={this.state.review}
+                                        onChange={e =>
+                                          this.updateReview(e.target.value)
+                                        }
+                                      />
+                                    </div>
+                                    <div>
+                                      <Button
+                                        outline
+                                        color="success"
+                                        className="button"
+                                        onClick={() =>
+                                          this.handleReview(
+                                            this.state.currentTutor.tutor_id
+                                          )
+                                        }
+                                      >
+                                        Submit
+                                      </Button>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <p>Please Login To Leave a Review</p>
+                                )}
+                                <div style={{ textAlign: "center" }}>
+                                  <StarRatingComponent
+                                    name="rate1"
+                                    starCount={5}
+                                    starColor={"#F7C744"}
+                                    value={this.state.rating}
+                                    onStarClick={this.onStarClick.bind(this)}
+                                  />
+                                </div>
+                                <div>
+                                  <div style={{ textAlign: "center" }}>
+                                    Student reviews{" "}
+                                    <hr className="hr-color-tutor" />
+                                  </div>
+                                  {mappedReviews}{" "}
+                                </div>
+                              </CardText>
+                            </CardBody>
+                          </Card>
+                        </Col>
+                      </div> */}
+                      <div>
+                        <Nav tabs>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "1"
+                              })}
+                              onClick={() => {
+                                this.toggle1("1");
                               }}
                             >
-                              <CardBody style={{ textAlign: "center" }}>
-                                <CardText>
-                                  <MapWithAMarker
-                                    markers={
-                                      this.state.currentTutor.coordinates
-                                    }
-                                  />
-                                </CardText>
-                              </CardBody>
-                            </Card>
-                          </div>
-                          <Checkout
-                            name={"Make A Payment for Tutor"}
-                            description={"Hour rate"}
-                            amount={currentTutor.pricehour}
-                            button_text="Buy Now"
-                          />
-                        </CardText>
-                      </CardBody>
-                    </Card>
-                  </Col>
-                </div>
-              </div>
-              <div className="sec-part-tutor">
-                <div>
-                  <Col>
-                    <Card
-                      style={{
-                        backgroundColor: "transparent",
-                        borderColor: "transparent"
-                      }}
-                    >
-                      <CardBody>
-                        <CardTitle style={{ textAlign: "center" }}>
-                          Reviews
-                        </CardTitle>
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                Reviews
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "2"
+                              })}
+                              onClick={() => {
+                                this.toggle1("2");
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                Contact
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                        </Nav>
+                        <TabContent activeTab={this.state.activeTab}>
+                          <TabPane tabId="1">
+                            <Row>
+                              <Col sm="12">
+                                <div>
+                                  <Col>
+                                    <Card
+                                      style={{
+                                        backgroundColor: "transparent",
+                                        borderColor: "transparent"
+                                      }}
+                                    >
+                                      <CardBody>
+                                        <CardTitle
+                                          style={{ textAlign: "center" }}
+                                        >
+                                          Reviews
+                                        </CardTitle>
 
-                        <CardText>
-                          {this.state.hasAccount ? (
+                                        <CardText>
+                                          {this.state.hasAccount ? (
+                                            <div>
+                                              <div>
+                                                <input
+                                                  className="Review"
+                                                  placeholder="Review"
+                                                  value={this.state.review}
+                                                  onChange={e =>
+                                                    this.updateReview(
+                                                      e.target.value
+                                                    )
+                                                  }
+                                                />
+                                              </div>
+                                              <div>
+                                                <Button
+                                                  outline
+                                                  color="success"
+                                                  className="button"
+                                                  onClick={() =>
+                                                    this.handleReview(
+                                                      this.state.currentTutor
+                                                        .tutor_id
+                                                    )
+                                                  }
+                                                >
+                                                  Submit
+                                                </Button>
+                                              </div>
+                                            </div>
+                                          ) : (
+                                            <p>
+                                              Please Login To Leave a Review
+                                            </p>
+                                          )}
+                                          <div style={{ textAlign: "center" }}>
+                                            <StarRatingComponent
+                                              name="rate1"
+                                              starCount={5}
+                                              starColor={"#F7C744"}
+                                              value={this.state.rating}
+                                              onStarClick={this.onStarClick.bind(
+                                                this
+                                              )}
+                                            />
+                                          </div>
+                                          <div>
+                                            <div
+                                              style={{ textAlign: "center" }}
+                                            >
+                                              Student reviews{" "}
+                                              <hr className="hr-color-tutor" />
+                                            </div>
+                                            {mappedReviews}{" "}
+                                          </div>
+                                        </CardText>
+                                      </CardBody>
+                                    </Card>
+                                  </Col>
+                                </div>
+                              </Col>
+                            </Row>
+                          </TabPane>
+                          <TabPane tabId="2">
                             <div>
-                              <div>
-                                <input
-                                  className="Review"
-                                  placeholder="Review"
-                                  value={this.state.review}
-                                  onChange={e =>
-                                    this.updateReview(e.target.value)
-                                  }
-                                />
-                              </div>
-                              <div>
-                                <Button
-                                  outline
-                                  color="success"
-                                  className="button"
-                                  onClick={() =>
-                                    this.handleReview(
-                                      this.state.currentTutor.tutor_id
-                                    )
-                                  }
+                              <Col sm="20">
+                                <Card
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    borderColor: "transparent"
+                                  }}
                                 >
-                                  Submit
-                                </Button>
-                              </div>
+                                  <CardBody style={{ textAlign: "center" }}>
+                                    <CardText>
+                                      <ContactForm />
+                                    </CardText>
+                                  </CardBody>
+                                </Card>
+                              </Col>
                             </div>
-                          ) : (
-                            <p>Please Login To Leave a Review</p>
-                          )}
-                          <div style={{ textAlign: "center" }}>
-                            <StarRatingComponent
-                              name="rate1"
-                              starCount={5}
-                              starColor={"#F7C744"}
-                              value={this.state.rating}
-                              onStarClick={this.onStarClick.bind(this)}
-                            />
-                          </div>
-                          <div>
-                            <div style={{ textAlign: "center" }}>
-                              Student reviews <hr className="hr-color-tutor" />
-                            </div>
-                            {mappedReviews}{" "}
-                          </div>
-                        </CardText>
-                      </CardBody>
-                    </Card>
-                  </Col>
-                </div>
-                <div>
-                  <Col sm="20">
-                    <Card
-                      style={{
-                        backgroundColor: "transparent",
-                        borderColor: "transparent"
-                      }}
-                    >
-                      <CardBody style={{ textAlign: "center" }}>
-                        <CardText>
-                          <ContactForm />
-                        </CardText>
-                      </CardBody>
-                    </Card>
-                  </Col>
+                          </TabPane>
+                        </TabContent>
+                      </div>
+                    </div>
+                  </div>
+                  <Checkout
+                    name={"Make A Payment for Tutor"}
+                    description={"Hour rate"}
+                    amount={currentTutor.pricehour}
+                    button_text="Buy Now"
+                  />
                 </div>
               </div>
             </div>
