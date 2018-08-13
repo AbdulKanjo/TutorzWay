@@ -33,6 +33,12 @@ const getAllTutorsBySubject = (req, res, next) => {
     .then(tutor => res.status(200).send(tutor))
     .catch(e => res.status(500).send("somethingiswrong"));
 };
+const getAllTutorsByPrice = (req, res, next) => {
+  const db = req.app.get("db");
+  db.get_tutor_by_price()
+    .then(tutor => res.status(200).send(tutor))
+    .catch(e => res.status(500).send("somethingiswrong"));
+};
 const getAllStudents = (req, res, next) => {
   const db = req.app.get("db");
   db.get_students()
@@ -197,5 +203,6 @@ module.exports = {
   newReview,
   getReviews,
   deleteReview,
-  getNumOfReviews
+  getNumOfReviews,
+  getAllTutorsByPrice
 };

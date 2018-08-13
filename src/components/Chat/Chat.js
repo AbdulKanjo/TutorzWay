@@ -39,7 +39,7 @@ class Chat extends React.Component {
           <div className="col-4">
             <div className="card-chat">
               <div className="card-body">
-                <div className="card-title">Ask questions</div>
+                <div className="card-title">Chat</div>
                 <hr />
                 <div className="messages">
                   {this.state.messages.map(message => {
@@ -53,6 +53,7 @@ class Chat extends React.Component {
               </div>
               <div className="card-footer">
                 <input
+                  style={{ textAlign: "center" }}
                   type="text"
                   placeholder="Username"
                   value={this.state.username}
@@ -61,6 +62,7 @@ class Chat extends React.Component {
                 />
                 <br />
                 <input
+                  style={{ textAlign: "center" }}
                   type="text"
                   placeholder="Message"
                   className="form-control"

@@ -12,7 +12,7 @@ import {
   Button
 } from "reactstrap";
 
-class ListOfTutorsByAge extends Component {
+class ListOfTutorsByPrice extends Component {
   constructor() {
     super();
     this.toggle = this.toggle.bind(this);
@@ -30,18 +30,15 @@ class ListOfTutorsByAge extends Component {
     this.getession();
   }
   getTutors() {
-    axios.get("/api/gettutorsbyage").then(res => {
+    axios.get("/api/gettutorsbyprice").then(res => {
       this.setState({ tutors: res.data });
       let tutorsPromises = this.state.tutors.map(tutor => {
         return axios.get(`/api/getrating/${tutor.tutor_id}`);
       });
-      // console.log(tutorsPromises);
+
       Promise.all(tutorsPromises)
         .then(response => {
-          // console.log(response);
           const tutorsWithRatings = response.map((e, i) => {
-            // console.log(e.data || "NO AVERAGE");
-            // return (this.state.tutors[i].rating = e.data || "no rating");
             return { ...this.state.tutors[i], rating: e.data || "no rating" };
           });
           this.setState({ tutors: tutorsWithRatings });
@@ -52,7 +49,6 @@ class ListOfTutorsByAge extends Component {
   getession() {
     axios.get("/api/me").then(response => {
       this.setState({ isAdmin: response.data.isadmin });
-      // console.log(response);
     });
   }
   toggle() {
@@ -77,19 +73,14 @@ class ListOfTutorsByAge extends Component {
           .includes(this.state.filterString.toUpperCase());
       })
       .map((e, i) => {
-        // console.log("EACH TUTOR!!!", e);
+        console.log("EACH TUTOR!!!", e);
 
         return (
           <div key={i} className="each-box-tutor">
             <aside className="profile-card">
               <header>
                 {e.first_name}
-                <img
-                  src={e.picture}
-                  // style={{ height: "200px" }}
-                  height="200p"
-                  width="200px"
-                />
+                <img src={e.picture} height="200p" width="200px" />
                 <h1>{e.last_name}</h1>
                 <h2 className="padding-for-list">Tutor</h2>
               </header>
@@ -127,10 +118,7 @@ class ListOfTutorsByAge extends Component {
                   </a>
                 </li>
 
-                <li className="each-el-on-list">
-                  {/* <img src="https://image.flaticon.com/icons/svg/33/33417.svg" /> */}
-                  ${e.pricehour}
-                </li>
+                <li className="each-el-on-list">${e.pricehour}</li>
               </ul>
             </aside>
             <div className="delete-btn">
@@ -149,45 +137,49 @@ class ListOfTutorsByAge extends Component {
       });
 
     return (
-      <div className="filter">
-        <div className="search-tutors">
-          <input
-            className="search"
-            placeholder="Search Tutors"
-            onChange={e => this.handleChange(e.target.value)}
-          />
+      <div>
+        <div className="all-el">
+          <div className="search-tutors">
+            <input
+              className="search"
+              placeholder="Search Tutors"
+              onChange={e => this.handleChange(e.target.value)}
+            />
+          </div>
+          <div className="filter">
+            <ButtonDropdown
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle}
+            >
+              <DropdownToggle caret color="primary">
+                Filters
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Filters</DropdownItem>
+                <DropdownItem>
+                  <Link id="filter-text" to="/gettutorsbyage">
+                    Filter By Age
+                  </Link>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem id="filter-text">
+                  <Link id="filter-text" to="/gettutorsbysubject">
+                    Filter By Subject
+                  </Link>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem id="filter-text">
+                  <Link id="filter-text" to="/gettutorsbysubject">
+                    Price (High to Low)
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </ButtonDropdown>
+          </div>
         </div>
-        <div className="filter">
-          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle caret color="primary">
-              Filters
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Filters</DropdownItem>
-              <DropdownItem>
-                <Link id="filter-text" to="/gettutorsbyage">
-                  Filter By Age
-                </Link>
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem id="filter-text">
-                <Link id="filter-text" to="/gettutorsbysubject">
-                  Filter By Subject
-                </Link>
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem id="filter-text">
-                <Link id="filter-text" to="/gettutorsbyprice">
-                  Price (Low to High)
-                </Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </ButtonDropdown>
-        </div>
-
         <div className="box-tutors">{search}</div>
       </div>
     );
   }
 }
-export default ListOfTutorsByAge;
+export default ListOfTutorsByPrice;

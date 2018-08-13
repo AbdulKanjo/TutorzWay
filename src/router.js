@@ -15,6 +15,7 @@ import GoogleMapsStudent from "./components/GoogleMap/GoogleMapsStudent";
 import GoogleMapsTutor from "./components/GoogleMap/GoogleMapsTutor";
 import ListOfTutorsByAge from "./components/ListOfTutors/ListOfTutorsByAge";
 import ListOfTutorsBySubject from "./components/ListOfTutors/ListOfTutorsBySubject";
+import ListOfTutorsByPrice from "./components/ListOfTutors/ListOfTutorsByPrice";
 export default (
   <Switch>
     <Route exact path="/" component={Home} />
@@ -31,5 +32,6 @@ export default (
     <Route path="/googlemaptutor" component={GoogleMapsTutor} />
     <Route path="/gettutorsbyage" component={ListOfTutorsByAge} />
     <Route path="/gettutorsbysubject" component={ListOfTutorsBySubject} />
+    <Route path="/gettutorsbyprice" component={ListOfTutorsByPrice} />
   </Switch>
 );

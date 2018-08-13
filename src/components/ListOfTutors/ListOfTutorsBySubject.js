@@ -8,7 +8,8 @@ import {
   ButtonDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  Button
 } from "reactstrap";
 
 class ListOfTutorsBySubject extends Component {
@@ -76,33 +77,68 @@ class ListOfTutorsBySubject extends Component {
           .includes(this.state.filterString.toUpperCase());
       })
       .map((e, i) => {
-        // console.log("EACH TUTOR!!!", e);
+        console.log("EACH TUTOR!!!", e);
 
         return (
           <div key={i} className="each-box-tutor">
-            <img className="personal-img" src={e.picture} alt="img" />
-            <div>
-              {" "}
-              <Link to={`/tutor/${e.first_name}`}>{e.first_name} </Link>
-            </div>
-            <div>{e.last_name} </div>
-            <div>{e.location} </div>
-            <div>{e.age} </div>
-            <div>{e.years_experience} </div>
-            <div>{e.class_subject} </div>
-            <StarRatingComponent
-              name="rate2"
-              editing={false}
-              starColor={"#F7C744"}
-              renderStarIcon={() => <span>★</span>}
-              starCount={5}
-              value={Number(e.rating)}
-            />
-            <div>
+            <aside className="profile-card">
+              <header>
+                {e.first_name}
+                <img
+                  src={e.picture}
+                  // style={{ height: "200px" }}
+                  height="200p"
+                  width="200px"
+                />
+                <h1>{e.last_name}</h1>
+                <h2 className="padding-for-list">Tutor</h2>
+              </header>
+
+              <div className="profile-bio">
+                <p className="margin-link-know">
+                  Get to know me more
+                  <Link to={`/tutor/${e.first_name}`}> Here! </Link>
+                </p>
+                <p>
+                  <div>{e.location} </div>
+                  <div>Subject: {e.class_subject}</div>
+                  <div>Age: {e.age} </div>
+                  <StarRatingComponent
+                    name="rate2"
+                    editing={false}
+                    starColor={"#F7C744"}
+                    renderStarIcon={() => <span>★</span>}
+                    starCount={5}
+                    value={Number(e.rating)}
+                  />
+                </p>
+              </div>
+
+              <ul className="profile-social-links">
+                <li className="each-el-on-list">
+                  <a href="https://accounts.google.com/signin/v2/sl/pwd?service=fusiontables&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
+                    <img src="https://image.flaticon.com/icons/png/512/281/281769.png" />
+                  </a>
+                </li>
+
+                <li className="each-el-on-list">
+                  <a href="https://github.com/">
+                    <img src="https://image.flaticon.com/icons/svg/270/270798.svg" />
+                  </a>
+                </li>
+
+                <li className="each-el-on-list">${e.pricehour}</li>
+              </ul>
+            </aside>
+            <div className="delete-btn">
               {this.state.isAdmin && (
-                <button onClick={id => this.handleDelete(e.tutor_id)}>
+                <Button
+                  outline
+                  color="danger"
+                  onClick={id => this.handleDelete(e.tutor_id)}
+                >
                   Delete
-                </button>
+                </Button>
               )}
             </div>
           </div>
@@ -111,16 +147,23 @@ class ListOfTutorsBySubject extends Component {
 
     return (
       <div>
-        <div>
+        <div className="search-tutors">
+          <input
+            className="search"
+            placeholder="Search By subject"
+            onChange={e => this.handleChange(e.target.value)}
+          />
+        </div>
+        <div className="filter">
           <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle caret color="primary">
-              Filter By
+              Filters
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Filters</DropdownItem>
               <DropdownItem>
                 <Link id="filter-text" to="/gettutorsbyage">
-                  Filter By Age{" "}
+                  Filter By Age
                 </Link>
               </DropdownItem>
               <DropdownItem divider />
@@ -129,14 +172,16 @@ class ListOfTutorsBySubject extends Component {
                   Filter By Subject
                 </Link>
               </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem id="filter-text">
+                <Link id="filter-text" to="/gettutorsbyprice">
+                  Price (Low to High)
+                </Link>
+              </DropdownItem>
             </DropdownMenu>
           </ButtonDropdown>
         </div>
-        <input
-          className="search"
-          placeholder="Search Tutors by Subject"
-          onChange={e => this.handleChange(e.target.value)}
-        />
+
         <div className="box-tutors">{search}</div>
       </div>
     );

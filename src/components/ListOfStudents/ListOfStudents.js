@@ -69,11 +69,13 @@ class ListOfStudents extends Component {
       });
     return (
       <div>
-        <input
-          className="search"
-          placeholder="Search Tutors"
-          onChange={e => this.handleChange(e.target.value)}
-        />
+        <div className="search-tutors">
+          <input
+            className="search"
+            placeholder="Search Students"
+            onChange={e => this.handleChange(e.target.value)}
+          />
+        </div>
         <div className="boxx">{students}</div>
       </div>
     );

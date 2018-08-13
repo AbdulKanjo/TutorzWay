@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import swal from "sweetalert2";
 class ContactForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
@@ -17,7 +17,7 @@ class ContactForm extends Component {
       }
     }).then(response => {
       if (response.data.msg === "success") {
-        alert("Message Sent.");
+        swal("Email Sent!");
         this.resetForm();
       } else if (response.data.msg === "fail") {
         alert("Message failed to send.");
@@ -52,7 +52,12 @@ class ContactForm extends Component {
           </div>
           <div className="form-group">
             <label for="message">Message</label>
-            <textarea className="form-control" rows="5" id="message" />
+            <textarea
+              className="form-control"
+              rows="5"
+              id="message"
+              style={{ lineHeight: "0.5" }}
+            />
           </div>
           <button type="submit" className="btn btn-primary">
             Submit

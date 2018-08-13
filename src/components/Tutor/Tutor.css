@@ -14,7 +14,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
-  text-align: center;
+  /* text-align: center; */
 }
 .containerr:hover .avatar-flip {
   transform: rotateY(180deg);
@@ -99,23 +99,24 @@ body {
   }
 }
 .hr-color-tutor {
-  border-color: white;
+  border-color: #dfe2e6;
 }
-.review-padd {
+/* .review-padd {
   padding-left: 10px;
-}
+} */
 .containerr {
   color: black;
 }
 .main-info-t {
   border-right: 2px solid gray;
   width: 20%;
+  text-align: center;
 }
 .tutor-information-f {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
   align-content: stretch;
 }
@@ -124,4 +125,35 @@ body {
 }
 .information-pad {
   padding-right: 6%;
+}
+.pick-sec {
+  padding-left: 2%;
+}
+.location-t {
+  padding-bottom: 5px;
+  text-align: center;
+}
+.dropdownmenu dropdown-menu dropdown-menu-right show {
+  width: 40vw;
+}
+.scroling {
+  height: 30vh;
+  overflow: scroll;
+}
+.review-sub {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.Review {
+  border: 0;
+  border-bottom: 1px solid;
+}
+.input-padd {
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .main-info-t {
+    display: none;
+  }
 }

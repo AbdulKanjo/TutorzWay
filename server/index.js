@@ -27,7 +27,8 @@ const {
   newReview,
   getReviews,
   deleteReview,
-  getNumOfReviews
+  getNumOfReviews,
+  getAllTutorsByPrice
 } = require("./controller");
 
 const app = express();
@@ -89,30 +90,6 @@ passport.serializeUser((user, done) => {
     })
     .catch(err => done(err, null));
 });
-
-//---------------new------------
-
-// passport.serializeUser((user, done) => {
-//   const db = app.get("db");
-
-//   db.get_student_by_authid(user.id).then(response => {
-//     console.log(response)
-//     if (!response[0]) {
-//       db.get_tutor_by_authid(user.id).then(res => {
-//         console.log("res=>>>", app);
-//         if (!res[0]) {
-//           console.log("REDIRECT NOW");
-//           app.use((req, res) => console.log("yello"));
-//           // app.res.redirect("http://localhost:3000/#/login");
-//         } else {
-//           return done(null, res[0]);
-//         }
-//       });
-//     } else {
-//       return done(null, response[0]);
-//     }
-//   });
-// });
 
 passport.deserializeUser((user, done) => {
   done(null, user);
@@ -176,6 +153,7 @@ app.get("/api/getrating/:id", getRating);
 app.get("/api/getreviews/:id", getReviews);
 app.get("/api/gettutorsbyage", getAllTutorsByAge);
 app.get("/api/gettutorsbysubject", getAllTutorsBySubject);
+app.get("/api/gettutorsbyprice", getAllTutorsByPrice);
 app.get("/api/getnumofreviews/:id", getNumOfReviews);
 app.delete("/api/tutors/:id", deleteTutor);
 app.delete("/api/deletetutorreview/:id", deleteReview);

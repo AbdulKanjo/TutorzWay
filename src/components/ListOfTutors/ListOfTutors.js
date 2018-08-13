@@ -81,24 +81,6 @@ class ListOfTutors extends Component {
 
         return (
           <div key={i} className="each-box-tutor">
-            {/* <img className="personal-img" src={e.picture} alt="img" />
-            <div>
-              {" "}
-              <Link to={`/tutor/${e.first_name}`}>{e.first_name} </Link>
-            </div>
-            <div>{e.last_name} </div>
-            <div>{e.location} </div>
-            <div>{e.age} </div>
-            <div>{e.years_experience} </div>
-            <div>{e.class_subject} </div>
-            <StarRatingComponent
-              name="rate2"
-              editing={false}
-              starColor={"#F7C744"}
-              renderStarIcon={() => <span>★</span>}
-              starCount={5}
-              value={Number(e.rating)}
-            /> */}
             <aside className="profile-card">
               <header>
                 {e.first_name}
@@ -151,9 +133,13 @@ class ListOfTutors extends Component {
                 </li>
               </ul>
             </aside>
-            <div>
+            <div className="delete-btn">
               {this.state.isAdmin && (
-                <Button onClick={id => this.handleDelete(e.tutor_id)}>
+                <Button
+                  outline
+                  color="danger"
+                  onClick={id => this.handleDelete(e.tutor_id)}
+                >
                   Delete
                 </Button>
               )}
@@ -164,33 +150,44 @@ class ListOfTutors extends Component {
 
     return (
       <div>
-        <div className="filter">
-          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle caret color="primary">
-              Filter By
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Filters</DropdownItem>
-              <DropdownItem>
-                <Link id="filter-text" to="/gettutorsbyage">
-                  Filter By Age{" "}
-                </Link>
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem id="filter-text">
-                <Link id="filter-text" to="/gettutorsbysubject">
-                  Filter By Subject
-                </Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </ButtonDropdown>
-        </div>
-        <div className="search-tutors">
-          <input
-            className="search"
-            placeholder="Search Tutors"
-            onChange={e => this.handleChange(e.target.value)}
-          />
+        <div className="all-el">
+          <div className="search-tutors">
+            <input
+              className="search"
+              placeholder="Search Tutors"
+              onChange={e => this.handleChange(e.target.value)}
+            />
+          </div>
+          <div className="filter">
+            <ButtonDropdown
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle}
+            >
+              <DropdownToggle caret color="primary">
+                Filters
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Filters</DropdownItem>
+                <DropdownItem>
+                  <Link id="filter-text" to="/gettutorsbyage">
+                    Filter By Age
+                  </Link>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem id="filter-text">
+                  <Link id="filter-text" to="/gettutorsbysubject">
+                    Filter By Subject
+                  </Link>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem id="filter-text">
+                  <Link id="filter-text" to="/gettutorsbyprice">
+                    Price (Low to High)
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </ButtonDropdown>
+          </div>
         </div>
         <div className="box-tutors">{search}</div>
       </div>
