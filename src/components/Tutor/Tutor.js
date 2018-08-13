@@ -324,7 +324,7 @@ class Tutor extends Component {
                                                 <div className="input-padd">
                                                   <input
                                                     className="Review"
-                                                    placeholder="How did your tutor"
+                                                    placeholder="Tell us More"
                                                     value={this.state.review}
                                                     onChange={e =>
                                                       this.updateReview(
@@ -402,6 +402,252 @@ class Tutor extends Component {
                             </div>
                           </TabPane>
                           <TabPane tabId="3">
+                            <div>
+                              <Col sm="20">
+                                <Card
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    borderColor: "transparent"
+                                  }}
+                                >
+                                  <CardBody
+                                    style={{
+                                      textAlign: "center",
+                                      height: "37vh"
+                                    }}
+                                  >
+                                    <CardText>
+                                      <div>
+                                        <Checkout
+                                          name={"Make A Payment for Tutor"}
+                                          description={"Hour rate"}
+                                          amount={currentTutor.pricehour}
+                                          button_text="Buy Now"
+                                        />
+                                      </div>
+                                    </CardText>
+                                  </CardBody>
+                                </Card>
+                              </Col>
+                            </div>
+                          </TabPane>
+                        </TabContent>
+                      </div>
+                    </div>
+                    <div className="mobile">
+                      <div className="pick-sec">
+                        <Nav tabs>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "1"
+                              })}
+                              onClick={() => {
+                                this.toggle1("1");
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                About
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "2"
+                              })}
+                              onClick={() => {
+                                this.toggle1("2");
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                Reviews phone
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "3"
+                              })}
+                              onClick={() => {
+                                this.toggle1("3");
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                Email {currentTutor.first_name}
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink
+                              className={classnames({
+                                active: this.state.activeTab === "4"
+                              })}
+                              onClick={() => {
+                                this.toggle1("4");
+                              }}
+                            >
+                              <p
+                                style={{
+                                  color: "black"
+                                }}
+                              >
+                                Make A Payment
+                              </p>
+                            </NavLink>
+                          </NavItem>
+                        </Nav>
+                        <TabContent activeTab={this.state.activeTab}>
+                          <TabPane tabId="1">
+                            <div>
+                              <Col sm="20">
+                                <Card
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    borderColor: "transparent"
+                                  }}
+                                >
+                                  <CardBody style={{ textAlign: "center" }}>
+                                    <CardText>
+                                      <h2 className="information-pad">
+                                        {currentTutor.first_name}{" "}
+                                        {currentTutor.last_name}
+                                      </h2>
+                                      <p className="information-pad">
+                                        <div>
+                                          Age: {currentTutor.age} years{" "}
+                                        </div>
+                                        <div>
+                                          Experience:{" "}
+                                          {currentTutor.years_experience} years{" "}
+                                        </div>
+                                        <div>
+                                          Rate: ${currentTutor.pricehour} an
+                                          Hour
+                                        </div>
+                                      </p>
+                                    </CardText>
+                                  </CardBody>
+                                </Card>
+                              </Col>
+                            </div>
+                          </TabPane>
+                          <TabPane tabId="2">
+                            <div>
+                              <Row>
+                                <Col sm="12">
+                                  <div>
+                                    <Col>
+                                      <Card
+                                        style={{
+                                          backgroundColor: "transparent",
+                                          borderColor: "transparent"
+                                        }}
+                                      >
+                                        <CardBody>
+                                          <CardTitle
+                                            style={{ textAlign: "center" }}
+                                          >
+                                            Reviews
+                                          </CardTitle>
+
+                                          <CardText>
+                                            {this.state.hasAccount ? (
+                                              <div className="review-sub">
+                                                <div className="input-padd">
+                                                  <input
+                                                    className="Review"
+                                                    placeholder="Tell us More"
+                                                    value={this.state.review}
+                                                    onChange={e =>
+                                                      this.updateReview(
+                                                        e.target.value
+                                                      )
+                                                    }
+                                                  />
+                                                </div>
+                                                <div>
+                                                  <Button
+                                                    outline
+                                                    color="success"
+                                                    className="button"
+                                                    onClick={() =>
+                                                      this.handleReview(
+                                                        this.state.currentTutor
+                                                          .tutor_id
+                                                      )
+                                                    }
+                                                  >
+                                                    Submit
+                                                  </Button>
+                                                </div>
+                                              </div>
+                                            ) : (
+                                              <p>
+                                                Please Login To Leave a Review
+                                              </p>
+                                            )}
+                                            <div style={{ textAlign: "start" }}>
+                                              <StarRatingComponent
+                                                name="rate1"
+                                                starCount={5}
+                                                starColor={"#F7C744"}
+                                                value={this.state.rating}
+                                                onStarClick={this.onStarClick.bind(
+                                                  this
+                                                )}
+                                              />
+                                            </div>
+                                            <div className="scroling">
+                                              <div
+                                                style={{ textAlign: "start" }}
+                                              >
+                                                Student reviews{" "}
+                                                <hr className="hr-color-tutor" />
+                                              </div>
+                                              {mappedReviews}{" "}
+                                            </div>
+                                          </CardText>
+                                        </CardBody>
+                                      </Card>
+                                    </Col>
+                                  </div>
+                                </Col>
+                              </Row>
+                            </div>
+                          </TabPane>
+                          <TabPane tabId="3">
+                            <div>
+                              <Col sm="20">
+                                <Card
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    borderColor: "transparent"
+                                  }}
+                                >
+                                  <CardBody style={{ textAlign: "center" }}>
+                                    <CardText>
+                                      <ContactForm />
+                                    </CardText>
+                                  </CardBody>
+                                </Card>
+                              </Col>
+                            </div>
+                          </TabPane>
+                          <TabPane tabId="4">
                             <div>
                               <Col sm="20">
                                 <Card

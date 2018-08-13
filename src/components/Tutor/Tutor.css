@@ -157,3 +157,27 @@ body {
     display: none;
   }
 }
+@media screen and (max-width: 480px) {
+  .sec-part-tutor {
+    display: none;
+  }
+  .containerr {
+    margin: 65px auto 120px;
+  }
+  .card-text {
+    padding-top: 40px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .mobile {
+    display: none;
+  }
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+}
