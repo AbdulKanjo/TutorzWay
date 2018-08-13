@@ -101,6 +101,15 @@ const deleteReview = (req, res, next) => {
     .catch(e => res.status(500).send("Something is wrong"));
 };
 
+//------------update---------------------------------
+const updateReview = (req, res, next) => {
+  console.log("req.body=>>", req.body);
+  const db = req.app.get("db");
+  const { id, review } = req.body;
+  db.update_review([id, review])
+    .then(() => res.status(200).send("all good"))
+    .catch(e => res.status(500).send("Something is wrong"));
+};
 //------------create students/tutors------------------
 
 const newStudent = (req, res, next) => {
@@ -204,5 +213,6 @@ module.exports = {
   getReviews,
   deleteReview,
   getNumOfReviews,
-  getAllTutorsByPrice
+  getAllTutorsByPrice,
+  updateReview
 };

@@ -7,9 +7,11 @@ class ContactForm extends Component {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
+    console.log(process.env.REACT_APP_SEND);
+
     axios({
       method: "POST",
-      url: "http://localhost:3007/send",
+      url: process.env.REACT_APP_SEND,
       data: {
         name: name,
         email: email,

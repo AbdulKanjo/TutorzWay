@@ -28,7 +28,8 @@ const {
   getReviews,
   deleteReview,
   getNumOfReviews,
-  getAllTutorsByPrice
+  getAllTutorsByPrice,
+  updateReview
 } = require("./controller");
 
 const app = express();
@@ -160,7 +161,7 @@ app.delete("/api/deletetutorreview/:id", deleteReview);
 app.post("/api/newtutor", newTutor);
 app.post("/api/newtutorrating", newRating);
 app.post("/api/newtutorreview", newReview);
-
+app.put("/api/updatetutorreview", updateReview);
 //--------------LOGIN ENDPOINTS---------------
 
 app.get("/login", login);
