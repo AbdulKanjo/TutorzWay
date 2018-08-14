@@ -1,19 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import Googlemapstudent from "./GoogleMapsStudent";
 import Googlemaptutor from "./GoogleMapsTutor";
-// import "./GoogleMap.css";
-import {
-  Card,
-  // Button,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardDeck,
-  CardSubtitle,
-  CardBody,
-  Col
-} from "reactstrap";
+
+import { Card, CardTitle, CardText, CardDeck, CardBody, Col } from "reactstrap";
 class GoogleMaps extends React.PureComponent {
   constructor() {
     super();
@@ -23,11 +13,8 @@ class GoogleMaps extends React.PureComponent {
   }
 
   render() {
-    console.log(this.state.markers);
     return (
       <div className="google-map-link">
-        {/* <Link to="/googlemapstudent">map of students</Link>
-        <Link to="/googlemaptutor"> map of tutors</Link> */}
         <div>
           <CardDeck>
             <Col sm="6">

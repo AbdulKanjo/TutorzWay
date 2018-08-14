@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import {
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardText,
-  Button,
-  CardTitle
-} from "reactstrap";
+import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 class Login extends Component {
   render() {
     return (

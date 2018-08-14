@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 
 class Student extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.getStudents();
   }
   render() {
-    console.log("heyyyy", this.props.match);
     let student =
       this.props.user.find(
         c => c.first_name === this.props.match.params.first_name

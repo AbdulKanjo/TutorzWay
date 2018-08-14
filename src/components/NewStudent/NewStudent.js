@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
 import {
   updateFirstName,
   updateLastName,
@@ -32,7 +32,6 @@ class NewStudent extends Component {
     });
   }
   handelNewStudent(e) {
-    console.log(this.props);
     axios
       .post("/api/newstudent", {
         first_name: this.props.first_name,
@@ -53,14 +52,11 @@ class NewStudent extends Component {
     geocodeByAddress(location)
       .then(location => getLatLng(location[0]))
       .then(latLng => {
-        console.log("Success", latLng);
         this.props.updateCoordinates(latLng);
       })
       .catch(error => console.error("Error", error));
   };
   render() {
-    console.log(this.state.auth_id.auth_id);
-
     return (
       <div className="new-signup-page">
         <div className="centering">
@@ -103,7 +99,6 @@ class NewStudent extends Component {
                           <label className="texting">Last Name: </label>
                           <input
                             className="first_name"
-                            // placeholder="Last Name"
                             onChange={e =>
                               this.props.updateLastName(e.target.value)
                             }
@@ -168,7 +163,6 @@ class NewStudent extends Component {
                                 <input
                                   id="input-subb"
                                   {...getInputProps({
-                                    // placeholder: "Location ...",
                                     className: "first_name"
                                   })}
                                 />

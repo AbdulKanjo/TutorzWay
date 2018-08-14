@@ -13,7 +13,6 @@ class ListOfStudents extends Component {
     this.state = { isAdmin: false, filterString: "" };
   }
   componentDidMount() {
-    console.log(this.props);
     this.props.getStudents();
     this.getession();
   }
@@ -32,11 +31,8 @@ class ListOfStudents extends Component {
   }
 
   render() {
-    console.log(this.props);
-
     let students = this.props.user
       .filter((e, i) => {
-        console.log(e);
         return (e.first_name + " " + e.last_name)
           .toUpperCase()
           .includes(this.state.filterString.toUpperCase());

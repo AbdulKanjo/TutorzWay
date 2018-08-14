@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Googlemaptutor from "../GoogleMap/GoogleMapsTutor";
 import Fade from "react-reveal/Fade";
 import {
   Carousel,
@@ -8,23 +7,14 @@ import {
   CarouselIndicators,
   CarouselCaption,
   Card,
-  // Button,
   CardImg,
   CardTitle,
   CardText,
   CardDeck,
-  Col,
-  // CardSubtitle,
   CardBody
 } from "reactstrap";
 import "./Home.css";
 import Axios from "axios";
-// import picture from "./newpic.jpeg";
-// import {
-//   VerticalTimeline,
-//   VerticalTimelineElement
-// } from "react-vertical-timeline-component";
-// import "react-vertical-timeline-component/style.min.css";
 
 const items = [
   {
@@ -91,9 +81,6 @@ class Home extends Component {
 
   componentDidMount() {
     Axios.get("/api/me").then(response => {
-      console.log("HOME COMPONENT DID MOUNT", response);
-
-      console.log(response.data.hasaccount);
       if (response.data.hasaccount === false) {
         this.props.history.push("/login");
       }
@@ -102,7 +89,7 @@ class Home extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    console.log(this.props);
+
     const slides = items.map(item => {
       return (
         <CarouselItem

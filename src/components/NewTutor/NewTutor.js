@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+
 import swal from "sweetalert2";
 import "./NewTutor.css";
 import {
@@ -32,8 +32,6 @@ class NewTutor extends Component {
     });
   }
   handelTutors(id) {
-    console.log(this.props);
-
     axios
       .post("/api/newtutor", {
         first_name: this.props.first_name,
@@ -53,7 +51,6 @@ class NewTutor extends Component {
     geocodeByAddress(location)
       .then(location => getLatLng(location[0]))
       .then(latLng => {
-        console.log("Success", latLng);
         this.props.updateCoordinates(latLng);
       })
       .catch(error => console.error("Error", error));
@@ -66,7 +63,7 @@ class NewTutor extends Component {
     const {
       updateFirstName,
       updateLastName,
-      // updateLocation,
+
       updateAge,
       updateYearsExperience,
       updateSubjectTutor,
@@ -74,7 +71,6 @@ class NewTutor extends Component {
     } = this.props;
     return (
       <div className="new-signup-page">
-        {/* <Link to="/newstudent">New student</Link> */}
         <div className="centering">
           <div id="puff-in-center" className="new-tutor-input">
             <Card
@@ -106,7 +102,6 @@ class NewTutor extends Component {
                           <label className="texting">First Name: </label>
                           <input
                             className="first_name"
-                            // placeholder="First Name"
                             onChange={e => updateFirstName(e.target.value)}
                           />
                         </div>
@@ -114,7 +109,6 @@ class NewTutor extends Component {
                           <label className="texting">Last Name: </label>
                           <input
                             className="first_name"
-                            // placeholder="Last Name"
                             onChange={e => updateLastName(e.target.value)}
                           />
                         </div>
@@ -125,7 +119,6 @@ class NewTutor extends Component {
                             id="exp-width"
                             min="0"
                             className="first_name"
-                            // placeholder="Age"
                             onChange={e => updateAge(e.target.value)}
                           />
                         </div>
@@ -136,7 +129,6 @@ class NewTutor extends Component {
                           <input
                             type="number"
                             className="first_namee"
-                            // placeholder="Years Experience"
                             onChange={e =>
                               updateYearsExperience(e.target.value)
                             }
@@ -149,7 +141,6 @@ class NewTutor extends Component {
                           <input
                             id="input-sub"
                             className="first_name"
-                            // placeholder="Subject"
                             onChange={e => updateSubjectTutor(e.target.value)}
                           />
                         </div>
@@ -158,7 +149,6 @@ class NewTutor extends Component {
                           <input
                             id="input-sub"
                             className="first_name"
-                            // placeholder="Picture"
                             onChange={e => updatePicture(e.target.value)}
                           />
                         </div>
@@ -179,7 +169,6 @@ class NewTutor extends Component {
                                 <input
                                   id="input-subb"
                                   {...getInputProps({
-                                    // placeholder: "Location ...",
                                     className: "first_name"
                                   })}
                                 />
@@ -220,7 +209,6 @@ class NewTutor extends Component {
                           <label className="texting">Hour Rate: </label>
                           <input
                             className="first_name"
-                            // placeholder="Last Name"
                             onChange={e => this.updatePrice(e.target.value)}
                           />
                         </div>

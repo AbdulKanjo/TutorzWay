@@ -67,20 +67,17 @@ class ListOfTutorsByPrice extends Component {
   render() {
     let search = this.state.tutors
       .filter((e, i) => {
-        console.log(e);
         return (e.first_name + " " + e.last_name)
           .toUpperCase()
           .includes(this.state.filterString.toUpperCase());
       })
       .map((e, i) => {
-        console.log("EACH TUTOR!!!", e);
-
         return (
           <div key={i} className="each-box-tutor">
             <aside className="profile-card">
               <header>
                 {e.first_name}
-                <img src={e.picture} height="200p" width="200px" />
+                <img alt="imgs" src={e.picture} height="200p" width="200px" />
                 <h1>{e.last_name}</h1>
                 <h2 className="padding-for-list">Tutor</h2>
               </header>
@@ -108,13 +105,19 @@ class ListOfTutorsByPrice extends Component {
               <ul className="profile-social-links">
                 <li className="each-el-on-list">
                   <a href="https://accounts.google.com/signin/v2/sl/pwd?service=fusiontables&flowName=GlifWebSignIn&flowEntry=ServiceLogin">
-                    <img src="https://image.flaticon.com/icons/png/512/281/281769.png" />
+                    <img
+                      alt="imhg"
+                      src="https://image.flaticon.com/icons/png/512/281/281769.png"
+                    />
                   </a>
                 </li>
 
                 <li className="each-el-on-list">
                   <a href="https://github.com/">
-                    <img src="https://image.flaticon.com/icons/svg/270/270798.svg" />
+                    <img
+                      alt="sdu"
+                      src="https://image.flaticon.com/icons/svg/270/270798.svg"
+                    />
                   </a>
                 </li>
 

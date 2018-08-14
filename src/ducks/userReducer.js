@@ -84,7 +84,7 @@ export function updatePicture(picture) {
   };
 }
 export function updateCoordinates(coordinates) {
-  console.log(`reducer___: ${coordinates}`);
+  // console.log(`reducer___: ${coordinates}`);
 
   return {
     type: UPDATE_COORDINATES,
@@ -99,7 +99,7 @@ export function updateYearsExperience(years_experience) {
 }
 
 export default function userReducer(state = initialState, action) {
-  console.log("REDUCER HIT: Action ->", action);
+  // console.log("REDUCER HIT: Action ->", action);
   switch (action.type) {
     case `${GET_STUDENTS}_FULFILLED`:
       return {

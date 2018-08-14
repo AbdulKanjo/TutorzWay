@@ -27,15 +27,12 @@ export default class Header extends React.Component {
   }
   getession() {
     axios.get("/api/me").then(response => {
-      console.log(response);
       this.setState({
         logIn: false
       });
     });
   }
   render() {
-    console.log(this.state.logIn);
-
     return (
       <div className="fixed-nav">
         <Navbar color="faded" light>

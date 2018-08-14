@@ -3,16 +3,7 @@ import axios from "axios";
 import StarRatingComponent from "react-star-rating-component";
 import Checkout from "../CheckOutStripe/CheckOutStripe";
 import ContactForm from "../ContactForm/ContactForm";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Col
-} from "reactstrap";
+import { Card, CardText, CardBody, CardTitle, Button, Col } from "reactstrap";
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from "reactstrap";
 import classnames from "classnames";
 import Chat from "../Chat/Chat";
@@ -86,12 +77,10 @@ class Tutor extends Component {
   }
   getession() {
     axios.get("/api/me").then(response => {
-      console.log(response);
       this.setState({
         hasAccount: response.data.hasaccount,
         username: response.data.name
       });
-      // console.log(response);
     });
   }
 
@@ -110,12 +99,10 @@ class Tutor extends Component {
           { currentTutor: currentTutor },
           this.getReviews(currentTutor.tutor_id)
         );
-        console.log(currentTutor.tutor_id);
       });
   }
 
   onStarClick(nextValue, prevValue, name) {
-    console.log("current tutor ID=>>>>", this.state.currentTutor.tutor_id);
     axios.post("/api/newtutorrating", {
       rating: nextValue,
       tutor_id: this.state.currentTutor.tutor_id
@@ -123,10 +110,8 @@ class Tutor extends Component {
     this.setState({ rating: nextValue });
   }
   getReviews(id) {
-    console.log("this is for get ", id);
     axios.get(`/api/getreviews/${id}`).then(res => {
       this.setState({ userreviews: res.data });
-      // console.log(res);
     });
   }
   handleDelete(id) {
@@ -139,9 +124,7 @@ class Tutor extends Component {
     this.setState({ review: newReview });
   }
   handleReview(id) {
-    console.log(id);
     let { review, username } = this.state;
-    console.log(username);
 
     axios
       .post("/api/newtutorreview", {
@@ -158,10 +141,7 @@ class Tutor extends Component {
   }
 
   render() {
-    console.log(this.state.currentTutor);
     let mappedReviews = this.state.userreviews.map((e, i) => {
-      console.log(this.state.userreviews);
-      console.log(e);
       return (
         <div key={i}>
           <div>{e.username}:</div>
@@ -193,7 +173,12 @@ class Tutor extends Component {
               <div className="first-part-tutor">
                 <div className="containerr">
                   <div className="avatar-flip">
-                    <img src={currentTutor.picture} height="150" width="150" />
+                    <img
+                      alt="kisd"
+                      src={currentTutor.picture}
+                      height="150"
+                      width="150"
+                    />
                     <MapWithAMarker
                       markers={this.state.currentTutor.coordinates}
                     />
@@ -201,6 +186,7 @@ class Tutor extends Component {
                   <div className="location-t">
                     <h4 className="loc-tutor">
                       <img
+                        alt="sdfea"
                         width="28px "
                         src="https://image.flaticon.com/icons/svg/684/684809.svg"
                       />
@@ -694,6 +680,7 @@ class Tutor extends Component {
                 >
                   <DropdownToggle>
                     <img
+                      alt="njjs"
                       className="chat-svg"
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Circle-icons-chat.svg/2000px-Circle-icons-chat.svg.png"
                     />
