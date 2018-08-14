@@ -98,13 +98,14 @@ passport.deserializeUser((user, done) => {
 
 //------------NODEMAILER------------------------
 
-console.log(process.env.USER_EMAIL);
+console.log(process.env.PASS, process.env.USER_EMAIL);
 
 var nodemailer = require("nodemailer");
 var transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
+
   auth: {
     user: process.env.USER_EMAIL,
     pass: process.env.PASS
