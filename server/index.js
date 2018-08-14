@@ -127,6 +127,7 @@ app.post("/send", (req, res, next) => {
 
   transporter.sendMail(mail, (err, data) => {
     if (err) {
+      console.log("NODEMAILER ERROR YO: ", err);
       res.json({
         msg: "fail"
       });
