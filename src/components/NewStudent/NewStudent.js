@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import ImageUploader from "../ListOfClasses/ListOfClasses";
+import swal from "sweetalert2";
 import {
   updateFirstName,
   updateLastName,
@@ -24,9 +25,6 @@ class NewStudent extends Component {
     this.state = { auth_id: "" };
   }
   componentDidMount() {
-    this.getUser();
-  }
-  getUser() {
     axios.get("/api/me").then(res => {
       this.setState({ auth_id: res.data });
     });
@@ -45,9 +43,15 @@ class NewStudent extends Component {
         auth_id: this.state.auth_id.auth_id
       })
       .then(() => {
-        this.getUser();
+        swal({
+          title: "Welcome to TutorzWay!",
+          confirmButtonText: "Thank You!"
+        }).then(() => {
+          this.props.history.push("/listofstudents");
+        });
       });
   }
+
   handleSelect = location => {
     geocodeByAddress(location)
       .then(location => getLatLng(location[0]))
@@ -57,6 +61,8 @@ class NewStudent extends Component {
       .catch(error => console.error("Error", error));
   };
   render() {
+    console.log(this.props);
+
     return (
       <div className="new-signup-page">
         <div className="centering">
@@ -158,30 +164,31 @@ class NewStudent extends Component {
                               getSuggestionItemProps,
                               loading
                             }) => (
-                              <div>
-                                <label className="texting">Location: </label>
-                                <input
-                                  id="input-subb"
-                                  {...getInputProps({
-                                    className: "first_name"
-                                  })}
-                                />
+                              <div className="location_container">
+                                <label className="has-float-label">
+                                  <input
+                                    {...getInputProps({
+                                      placeholder: "Search Places ...",
+                                      className: "location-search-input"
+                                    })}
+                                  />
+                                  <span id="ce_title">Location</span>
+                                </label>
                                 <div className="autocomplete-dropdown-container">
                                   {loading && <div>Loading...</div>}
                                   {suggestions.map(suggestion => {
                                     const className = suggestion.active
                                       ? "suggestion-item--active"
                                       : "suggestion-item";
+                                    // inline style for demonstration purpose
                                     const style = suggestion.active
                                       ? {
-                                          backgroundColor: "#fafafa",
-                                          cursor: "pointer",
-                                          borderWidth: "0px 0px 1px 0px"
+                                          backgroundColor: "#d1cfcf",
+                                          cursor: "pointer"
                                         }
                                       : {
                                           backgroundColor: "#ffffff",
-                                          cursor: "pointer",
-                                          borderWidth: "0px 0px 1px 0px"
+                                          cursor: "pointer"
                                         };
                                     return (
                                       <div

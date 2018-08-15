@@ -142,7 +142,10 @@ const newStudent = (req, res, next) => {
       db.change_user_toTrue([auth_id]);
     })
     .then(() => res.status(200).send("all good"))
-    .catch(e => res.status(500).send("Something is wrong"));
+    .catch(e => {
+      console.log(e);
+      res.status(500).send("Something is wrong");
+    });
 };
 
 const newTutor = (req, res, next) => {
@@ -179,7 +182,6 @@ const newTutor = (req, res, next) => {
     .then(() => res.status(200).send("all good"))
     .catch(e => {
       console.log(e);
-
       res.status(500).send("Something is wrong");
     });
 };

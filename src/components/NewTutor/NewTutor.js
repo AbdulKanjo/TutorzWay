@@ -45,7 +45,14 @@ class NewTutor extends Component {
         auth_id: this.state.auth_id.auth_id,
         pricehour: this.state.pricehour
       })
-      .then(swal("Welcome to TutorzWay!", "", "success"));
+      .then(() => {
+        swal({
+          title: "Welcome to TutorzWay!",
+          confirmButtonText: "Thank You!"
+        }).then(() => {
+          this.props.history.push("/listoftutors");
+        });
+      });
   }
   handleSelect = location => {
     geocodeByAddress(location)
