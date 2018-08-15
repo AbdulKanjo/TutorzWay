@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-
+import ImageUploader from "../ListOfClasses/ListOfClasses";
 import {
   updateFirstName,
   updateLastName,
@@ -67,7 +67,7 @@ class NewStudent extends Component {
               style={{
                 borderColor: "#455E7A",
                 padding: "0",
-                width: "400px",
+                width: "370px",
                 borderRadius: "10px"
               }}
             >
@@ -137,14 +137,14 @@ class NewStudent extends Component {
                             }
                           />
                         </div>
-                        <div>
-                          <label className="texting">Picture: </label>
-                          <input
-                            className="first_name"
-                            onChange={e =>
-                              this.props.updatePicture(e.target.value)
-                            }
-                          />
+                        <div className="image-up">
+                          <div>
+                            <label className="texting">Picture: </label>
+                          </div>
+
+                          <div className="uploader-pos">
+                            <ImageUploader />
+                          </div>
                         </div>
                         <div>
                           <PlacesAutocomplete

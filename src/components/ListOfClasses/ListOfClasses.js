@@ -1,40 +1,74 @@
 import React, { Component } from "react";
-// import axios from "axios";
-import "../ListOfClasses/ListOfclasses.css";
-class ListOfClasses extends Component {
+import Dropzone from "react-dropzone";
+import request from "superagent";
+import { connect } from "react-redux";
+import { updatePicture } from "../../ducks/userReducer";
+const CLOUDINARY_UPLOAD_URL =
+  "https://api.cloudinary.com/v1_1/dhbnespv2/image/upload";
+const CLOUDINARY_UPLOAD_PRESET = "abdulkanjo";
+
+class ImageUploader extends Component {
+  state = {
+    image: ""
+  };
+
+  onImageDrop = files => {
+    this.handleImageUpload(files[0]);
+  };
+
+  handleImageUpload = file => {
+    let upload = request
+      .post(CLOUDINARY_UPLOAD_URL)
+      .field("upload_preset", CLOUDINARY_UPLOAD_PRESET)
+      .field("file", file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.log(err);
+      }
+      if (response.body.secure_url !== "") {
+        this.props.updatePicture(response.body.secure_url);
+      }
+    });
+  };
+
   render() {
     return (
       <div>
-        <div className="containerr">
-          <div className="avatar-flip">
-            <img
-              alt="clsd"
-              src="http://media.idownloadblog.com/wp-content/uploads/2012/04/Phil-Schiller-headshot-e1362692403868.jpg"
-              height="150"
-              width="150"
-            />
-            <img
-              alt="asd"
-              src="http://i1112.photobucket.com/albums/k497/animalsbeingdicks/abd-3-12-2015.gif~original"
-              height="150"
-              width="150"
-            />
+        <Dropzone
+          onDrop={this.onImageDrop}
+          multiple={false}
+          accept="image/*"
+          className="ce_image_dropzone"
+        >
+          <div>
+            {this.state.image === "" ? (
+              <div className="ce_dropzone_text" style={{ color: "#6a6a6a" }}>
+                Select an image
+              </div>
+            ) : (
+              <div className="image_uploader_container">
+                <img
+                  className="ep_upload_pic"
+                  src={this.state.image}
+                  alt="event pic"
+                />
+              </div>
+            )}
           </div>
-          <h2>John Smith</h2>
-          <h4>HOVER OVER CONTAINER</h4>
-          <p>
-            Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-            Maecenas sed diam eget risus varius blandit sit amet non magna ip
-            sum dolore.
-          </p>
-          <p>
-            Connec dolore ipsum faucibus mollis interdum. Donec ullamcorper
-            nulla non metus auctor fringilla.
-          </p>
-        </div>
+        </Dropzone>
       </div>
     );
   }
 }
-
-export default ListOfClasses;
+function mapStateToProps(state) {
+  return {
+    picture: state.picture
+  };
+}
+export default connect(
+  mapStateToProps,
+  {
+    updatePicture
+  }
+)(ImageUploader);

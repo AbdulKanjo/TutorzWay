@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-
 import swal from "sweetalert2";
 import "./NewTutor.css";
+import ImageUploader from "../ListOfClasses/ListOfClasses";
 import {
   updateFirstName,
   updateLastName,
@@ -63,11 +63,9 @@ class NewTutor extends Component {
     const {
       updateFirstName,
       updateLastName,
-
       updateAge,
       updateYearsExperience,
-      updateSubjectTutor,
-      updatePicture
+      updateSubjectTutor
     } = this.props;
     return (
       <div className="new-signup-page">
@@ -79,7 +77,7 @@ class NewTutor extends Component {
               style={{
                 borderColor: "#455E7A",
                 padding: "0",
-                width: "400px",
+                width: "370px",
                 borderRadius: "10px"
               }}
             >
@@ -144,13 +142,14 @@ class NewTutor extends Component {
                             onChange={e => updateSubjectTutor(e.target.value)}
                           />
                         </div>
-                        <div>
-                          <label className="texting">Picture: </label>
-                          <input
-                            id="input-sub"
-                            className="first_name"
-                            onChange={e => updatePicture(e.target.value)}
-                          />
+                        <div className="image-up">
+                          <div>
+                            <label className="texting">Picture: </label>
+                          </div>
+
+                          <div className="uploader-pos">
+                            <ImageUploader />
+                          </div>
                         </div>
                         <div>
                           <PlacesAutocomplete
